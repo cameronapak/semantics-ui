@@ -1,6 +1,8 @@
-;(() => {
-  const initTabs = (tabsComponent) => {
-    const tablist = tabsComponent.querySelector('[role="tablist"]')
+class BcTabs extends HTMLElement {
+  connectedCallback() {
+    if (this.dataset.initialized) return
+
+    const tablist = this.querySelector('[role="tablist"]')
     if (!tablist) return
 
     const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'))
@@ -53,11 +55,8 @@
       nextTab.focus()
     })
 
-    tabsComponent.dataset.tabsInitialized = true
-    tabsComponent.dispatchEvent(new CustomEvent('basecoat:initialized'))
+    this.dataset.initialized = 'true'
+    this.dispatchEvent(new CustomEvent('basecoat:initialized'))
   }
-
-  if (window.basecoat) {
-    window.basecoat.register('tabs', '.tabs:not([data-tabs-initialized])', initTabs)
-  }
-})()
+}
+customElements.define('bc-tabs', BcTabs)

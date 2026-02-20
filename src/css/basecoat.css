@@ -146,318 +146,116 @@
       border-radius: var(--scrollbar-radius);
     }
   }
-}
 
-/* Alert */
-@layer components {
-  .alert,
-  .alert-destructive {
-    @apply relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current;
-
-    > h2,
-    > h3,
-    > h4,
-    > h5,
-    > h6,
-    > strong,
-    > [data-title] {
-      @apply col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight;
-    }
-    > section {
-      @apply text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed;
-
-      ul {
-        @apply list-inside list-disc text-sm;
-      }
-    }
-  }
-  .alert {
-    @apply bg-card text-card-foreground;
-  }
-  .alert-destructive {
-    @apply text-destructive bg-card [&>svg]:text-current;
-
-    > section {
-      @apply text-destructive;
-    }
-  }
-}
-
-/* Badge */
-@layer components {
-  .badge,
-  .badge-primary,
-  .badge-secondary,
-  .badge-destructive,
-  .badge-outline {
-    @apply inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden;
-  }
-  .badge,
-  .badge-primary {
-    @apply border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90;
-  }
-  .badge-secondary {
-    @apply border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90;
-  }
-  .badge-destructive {
-    @apply border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60;
-  }
-  .badge-outline {
-    @apply text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground;
-  }
-}
-
-/* Button */
-@layer components {
-  .btn,
-  .btn-primary,
-  .btn-secondary,
-  .btn-outline,
-  .btn-ghost,
-  .btn-link,
-  .btn-destructive,
-  .btn-sm,
-  .btn-sm-primary,
-  .btn-sm-secondary,
-  .btn-sm-outline,
-  .btn-sm-ghost,
-  .btn-sm-link,
-  .btn-sm-destructive,
-  .btn-lg,
-  .btn-lg-primary,
-  .btn-lg-secondary,
-  .btn-lg-outline,
-  .btn-lg-ghost,
-  .btn-lg-link,
-  .btn-lg-destructive,
-  .btn-icon,
-  .btn-icon-primary,
-  .btn-icon-secondary,
-  .btn-icon-outline,
-  .btn-icon-ghost,
-  .btn-icon-link,
-  .btn-icon-destructive,
-  .btn-sm-icon,
-  .btn-sm-icon-primary,
-  .btn-sm-icon-secondary,
-  .btn-sm-icon-outline,
-  .btn-sm-icon-ghost,
-  .btn-sm-icon-link,
-  .btn-sm-icon-destructive,
-  .btn-lg-icon,
-  .btn-lg-icon-primary,
-  .btn-lg-icon-secondary,
-  .btn-lg-icon-outline,
-  .btn-lg-icon-ghost,
-  .btn-lg-icon-link,
-  .btn-lg-icon-destructive {
+  /* Button */
+  :is(button:not([role]), input:is([type="submit"], [type="reset"], [type="button"]), a.button) {
     @apply active:translate-y-0.5 transition-transform duration-150 ease-out inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer rounded-md;
-  }
-  .btn,
-  .btn-primary,
-  .btn-secondary,
-  .btn-outline,
-  .btn-ghost,
-  .btn-link,
-  .btn-destructive {
-    @apply gap-2 h-9 px-4 py-2 has-[>svg]:px-3;
-  }
-  .btn-icon,
-  .btn-icon-primary,
-  .btn-icon-secondary,
-  .btn-icon-outline,
-  .btn-icon-ghost,
-  .btn-icon-link,
-  .btn-icon-destructive {
-    @apply size-9;
-  }
-  .btn-sm,
-  .btn-sm-primary,
-  .btn-sm-secondary,
-  .btn-sm-outline,
-  .btn-sm-ghost,
-  .btn-sm-link,
-  .btn-sm-destructive {
-    @apply gap-1.5 h-8 px-3 has-[>svg]:px-2.5;
-  }
-  .btn-sm-icon,
-  .btn-sm-icon-primary,
-  .btn-sm-icon-secondary,
-  .btn-sm-icon-outline,
-  .btn-sm-icon-ghost,
-  .btn-sm-icon-link,
-  .btn-sm-icon-destructive {
-    @apply size-8;
-  }
-  .btn-lg,
-  .btn-lg-primary,
-  .btn-lg-secondary,
-  .btn-lg-outline,
-  .btn-lg-ghost,
-  .btn-lg-link,
-  .btn-lg-destructive {
-    @apply gap-2 h-10 px-6 has-[>svg]:px-4;
-  }
-  .btn-lg-icon,
-  .btn-lg-icon-primary,
-  .btn-lg-icon-secondary,
-  .btn-lg-icon-outline,
-  .btn-lg-icon-ghost,
-  .btn-lg-icon-link,
-  .btn-lg-icon-destructive {
-    @apply size-10;
-  }
-  .btn,
-  .btn-primary,
-  .btn-sm,
-  .btn-sm-primary,
-  .btn-lg,
-  .btn-lg-primary,
-  .btn-icon,
-  .btn-icon-primary,
-  .btn-sm-icon,
-  .btn-sm-icon-primary,
-  .btn-lg-icon,
-  .btn-lg-icon-primary {
-    @apply bg-primary text-primary-foreground shadow-xs hover:bg-primary/90;
-    &[aria-pressed='true'] {
-      @apply bg-primary/90;
-    }
-  }
-  .btn-secondary,
-  .btn-sm-secondary,
-  .btn-lg-secondary,
-  .btn-icon-secondary,
-  .btn-sm-icon-secondary,
-  .btn-lg-icon-secondary {
-    @apply bg-secondary text-secondary-foreground shadow-xs;
-    &:hover,
-    &[aria-pressed='true'] {
-      @apply bg-secondary/80;
-    }
-  }
-  .btn-outline,
-  .btn-sm-outline,
-  .btn-lg-outline,
-  .btn-icon-outline,
-  .btn-sm-icon-outline,
-  .btn-lg-icon-outline {
-    @apply border bg-background shadow-xs dark:bg-input/30 dark:border-input;
-    &:hover,
-    &[aria-pressed='true'] {
-      @apply bg-accent text-accent-foreground dark:bg-accent/50;
-    }
-  }
-  .btn-ghost,
-  .btn-sm-ghost,
-  .btn-lg-ghost,
-  .btn-icon-ghost,
-  .btn-sm-icon-ghost,
-  .btn-lg-icon-ghost {
-    &:hover,
-    &[aria-pressed='true'] {
-      @apply bg-accent text-accent-foreground dark:bg-accent/50;
-    }
-  }
-  .btn-link,
-  .btn-sm-link,
-  .btn-lg-link,
-  .btn-icon-link,
-  .btn-sm-icon-link,
-  .btn-lg-icon-link {
-    @apply text-primary underline-offset-4;
-    &:hover,
-    &[aria-pressed='true'] {
-      @apply hover:underline;
-    }
-  }
-  .btn-destructive,
-  .btn-sm-destructive,
-  .btn-lg-destructive,
-  .btn-icon-destructive,
-  .btn-sm-icon-destructive,
-  .btn-lg-icon-destructive {
-    @apply bg-destructive text-white shadow-xs focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60;
-    &:hover,
-    &[aria-pressed='true'] {
-      @apply bg-destructive/90 dark:bg-destructive/50;
-    }
-  }
-}
 
-/* Button Group */
-@layer components {
-  .button-group {
-    @apply inline-flex w-fit items-stretch;
-    /* isolate */
-
-    > *:focus-visible,
-    > :is(.dropdown-menu, .popover, .select) > button:focus-visible {
-      @apply relative z-10;
+    /* Default size */
+    &:not([data-size]) {
+      @apply gap-2 h-9 px-4 py-2 has-[>svg]:px-3;
+    }
+    &[data-size="sm"] {
+      @apply gap-1.5 h-8 px-3 has-[>svg]:px-2.5;
+    }
+    &[data-size="lg"] {
+      @apply gap-2 h-10 px-6 has-[>svg]:px-4;
+    }
+    &[data-size="icon"] {
+      @apply size-9;
     }
 
-    > hr[role='separator'] {
-      @apply w-0 h-auto self-stretch border border-input shrink-0 m-0;
-    }
-
-    &:not([data-orientation='vertical']) {
-      > *:not(:first-child),
-      > :is(.dropdown-menu, .popover, .select):not(:first-child) > button {
-        @apply rounded-l-none border-l-0;
-      }
-      > *:not(:last-child),
-      > :is(.dropdown-menu, .popover, .select):not(:last-child) > button {
-        @apply rounded-r-none;
+    /* Primary (default variant) */
+    &:not([data-variant]),
+    &[data-variant="primary"] {
+      @apply bg-primary text-primary-foreground shadow-xs hover:bg-primary/90;
+      &[aria-pressed='true'] {
+        @apply bg-primary/90;
       }
     }
-    &[data-orientation='vertical'] {
-      @apply flex-col;
-
-      > hr[role='separator'] {
-        @apply w-auto h-px;
+    /* Secondary */
+    &[data-variant="secondary"] {
+      @apply bg-secondary text-secondary-foreground shadow-xs;
+      &:hover,
+      &[aria-pressed='true'] {
+        @apply bg-secondary/80;
       }
-
-      > *:not(:first-child),
-      > :is(.dropdown-menu, .popover, .select):not(:first-child) > button {
-        @apply rounded-t-none border-t-0;
+    }
+    /* Outline */
+    &[data-variant="outline"] {
+      @apply border bg-background shadow-xs dark:bg-input/30 dark:border-input;
+      &:hover,
+      &[aria-pressed='true'] {
+        @apply bg-accent text-accent-foreground dark:bg-accent/50;
       }
-      > *:not(:last-child),
-      > :is(.dropdown-menu, .popover, .select):not(:last-child) > button {
-        @apply rounded-b-none;
+    }
+    /* Ghost */
+    &[data-variant="ghost"] {
+      &:hover,
+      &[aria-pressed='true'] {
+        @apply bg-accent text-accent-foreground dark:bg-accent/50;
+      }
+    }
+    /* Link */
+    &[data-variant="link"] {
+      @apply text-primary underline-offset-4;
+      &:hover,
+      &[aria-pressed='true'] {
+        @apply hover:underline;
+      }
+    }
+    /* Destructive */
+    &[data-variant="destructive"] {
+      @apply bg-destructive text-white shadow-xs focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60;
+      &:hover,
+      &[aria-pressed='true'] {
+        @apply bg-destructive/90 dark:bg-destructive/50;
       }
     }
   }
-}
 
-/* Card */
-@layer components {
-  .card {
-    @apply bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm;
+  /* Input */
+  input:not([type="checkbox"], [type="radio"], [type="range"], [type="hidden"], [type="file"], [type="color"], [role]) {
+    @apply appearance-none file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+    @apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px];
+    @apply aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive;
+  }
 
-    > header {
-      @apply @container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6;
-      /* TODO: CLEAN has-data-[slot=card-action] */
+  /* File Input */
+  input[type="file"] {
+    @apply appearance-none file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+    @apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px];
+    @apply aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive;
+  }
 
-      h2 {
-        @apply leading-none font-semibold;
-      }
-      p {
-        @apply text-muted-foreground text-sm;
-      }
-    }
-    > section {
-      @apply px-6;
-    }
-    > footer {
-      @apply flex items-center px-6 [.border-t]:pt-6;
+  /* Textarea */
+  textarea {
+    @apply border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+  }
+
+  /* Select (native) */
+  select {
+    @apply appearance-none border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent pl-3 pr-9 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 h-9;
+    @apply bg-[image:var(--chevron-down-icon-50)] bg-no-repeat bg-position-[center_right_0.75rem] bg-size-[1rem];
+
+    option,
+    optgroup {
+      @apply bg-popover text-popover-foreground;
     }
   }
-}
 
-/* Checkbox */
-@layer components {
-  :is(.form, .field) input[type='checkbox']:not([role='switch']),
-  .input[type='checkbox']:not([role='switch']) {
+  /* Label */
+  label {
+    @apply flex items-center gap-2 text-sm leading-none font-medium select-none peer-disabled:pointer-events-none peer-disabled:opacity-50;
+
+    &:has(> *:disabled),
+    &:has(+ *:disabled) {
+      @apply opacity-50 pointer-events-none;
+    }
+  }
+
+  /* Checkbox */
+  input[type='checkbox']:not([role='switch']) {
     @apply appearance-none border-input dark:bg-input/30 checked:bg-primary dark:checked:bg-primary checked:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50;
 
     &:checked:after {
@@ -465,141 +263,99 @@
       @apply mask-[image:var(--check-icon)] mask-size-[0.875rem] mask-no-repeat mask-center;
     }
   }
-}
 
-/* Collapsible */
-@layer components {
-  details {
-    &::details-content {
-      block-size: 0;
-      @apply block opacity-0 transition-discrete transition-all;
-    }
-    &[open]::details-content {
-      block-size: auto;
-      block-size: calc-size(auto, size);
-      @apply opacity-100;
-    }
-    summary {
-      @apply inline-flex items-center cursor-pointer;
-    }
-  }
-  details > summary::-webkit-details-marker {
-    display: none;
-  }
-}
+  /* Radio */
+  input[type='radio'] {
+    @apply appearance-none border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 aspect-square size-4 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 relative;
 
-/* Command */
-@layer components {
-  .command-dialog {
-    @apply inset-y-0 opacity-0 transition-all transition-discrete;
-
-    &:is([open], :popover-open) {
-      @apply opacity-100;
-
-      &::backdrop {
-        @apply opacity-100;
-      }
-      > * {
-        @apply scale-100;
-      }
-
-      @starting-style {
-        @apply opacity-0;
-
-        &::backdrop {
-          @apply opacity-0;
-        }
-        > * {
-          @apply scale-95;
-        }
-      }
-    }
-    &::backdrop {
-      @apply bg-black/50 opacity-0 transition-all transition-discrete;
-    }
-    > * {
-      @apply bg-background fixed top-[50%] left-[50%] z-50 flex flex-col w-full max-w-[calc(100%_-_2rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-lg border shadow-lg sm:max-w-lg max-h-[min(640px,calc(100%_-_2rem))];
-      @apply transition-all scale-95;
-
-      > button,
-      > form[method='dialog'] {
-        @apply absolute top-4 right-4;
-      }
-      > button,
-      > form[method='dialog'] > button {
-        @apply ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground  rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
-      }
-    }
-
-    .command {
-      > header input {
-        @apply h-12;
-      }
-      [role='menu'] {
-        @apply px-2;
-
-        [role='menuitem'] {
-          @apply py-3 px-2 [&_svg]:size-5;
-        }
-        [role='heading'] {
-          @apply px-2 py-1.5 font-medium text-muted-foreground;
-        }
-      }
+    &:checked:before {
+      @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 content-[''] rounded-full size-2 bg-primary;
     }
   }
 
-  .command {
-    > header {
-      @apply flex items-center border-b px-3 gap-2;
+  /* Switch */
+  input[type='checkbox'][role='switch'] {
+    @apply appearance-none focus-visible:border-ring focus-visible:ring-ring/50 inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50;
+    @apply bg-input dark:bg-input/80 checked:bg-primary dark:checked:bg-primary;
+    @apply before:content-[''] before:pointer-events-none before:block before:size-4 before:rounded-full before:ring-0 before:transition-all;
+    @apply before:bg-background dark:before:bg-foreground;
+    @apply dark:checked:before:bg-primary-foreground checked:before:ms-3.5;
+  }
 
-      svg {
-        @apply size-4 shrink-0 opacity-50;
+  /* Range */
+  input[type='range'] {
+    @apply appearance-none flex items-center p-0 outline-none;
+    --slider-value: 20%;
+
+    &:hover,
+    &:focus-visible {
+      &::-webkit-slider-thumb {
+        @apply ring-4;
       }
-      input {
-        @apply placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50;
+      &::-moz-range-thumb {
+        @apply ring-4;
+      }
+      &::-ms-thumb {
+        @apply ring-4;
       }
     }
-    [role='menu'] {
-      @apply max-h-[300px] overflow-y-auto overflow-x-hidden p-1;
 
-      [role='menuitem'] {
-        @apply aria-hidden:hidden relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none aria-disabled:opacity-50 aria-disabled:pointer-events-none disabled:opacity-50 disabled:pointer-events-none w-full truncate [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
-
-        &.active {
-          @apply bg-accent text-accent-foreground;
-        }
-      }
-      [role='heading'] {
-        @apply text-muted-foreground flex px-2 py-1.5 text-xs font-medium;
-      }
-      [role='group']:not(:has([role='menuitem']:not([aria-hidden='true']))) {
-        @apply hidden;
-      }
-      [role='separator'] {
-        @apply border-border -mx-1 my-1;
-      }
-      &:not(:has([role='menuitem']:not([aria-hidden='true'])))::before {
-        @apply flex items-center justify-center py-6 px-3 text-sm truncate -m-1;
-      }
-      &[data-empty]:not(:has([role='menuitem']:not([aria-hidden='true'])))::before {
-        @apply content-[attr(data-empty)];
-      }
-      &:not([data-empty]):not(:has([role='menuitem']:not([aria-hidden='true'])))::before {
-        @apply content-['No_results_found'];
-      }
+    &::-webkit-slider-thumb {
+      @apply appearance-none border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm -mt-1.25;
     }
-    &:not([data-command-initialized]) [role='menuitem'] {
-      @apply hover:bg-accent hover:text-accent-foreground;
+    &::-webkit-slider-runnable-track {
+      @apply appearance-none rounded-full h-1.5 w-full;
+      background: linear-gradient(to right, var(--primary) var(--slider-value), var(--muted) var(--slider-value));
     }
-    &:has(> header input:not(:placeholder-shown)) [role='separator'] {
-      @apply hidden;
+    &::-moz-range-thumb {
+      @apply appearance-none border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm -mt-1.25;
+    }
+    &::-moz-range-track {
+      @apply appearance-none rounded-full h-1.5 w-full;
+      background: linear-gradient(to right, var(--primary) var(--slider-value), var(--muted) var(--slider-value));
+    }
+    &::-ms-thumb {
+      @apply appearance-none border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm -mt-1.25;
+    }
+    &::-ms-track {
+      @apply appearance-none rounded-full h-1.5 w-full;
+    }
+    &::-ms-fill-lower {
+      @apply bg-primary rounded-full;
+    }
+    &::-ms-fill-upper {
+      @apply bg-muted rounded-full;
     }
   }
-}
 
-/* Dialog */
-@layer components {
-  .dialog {
+  /* Table */
+  table {
+    @apply w-full caption-bottom text-sm;
+    thead {
+      @apply [&_tr]:border-b;
+    }
+    tbody {
+      @apply [&_tr:last-child]:border-0;
+    }
+    tfoot {
+      @apply bg-muted/50 border-t font-medium [&>tr]:last:border-b-0;
+    }
+    tr {
+      @apply hover:bg-muted/50 border-b transition-colors;
+    }
+    th {
+      @apply text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px];
+    }
+    td {
+      @apply p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px];
+    }
+    caption {
+      @apply text-muted-foreground mt-4 text-sm;
+    }
+  }
+
+  /* Dialog */
+  dialog {
     @apply inset-y-0 opacity-0 transition-all transition-discrete;
 
     &:is([open], :popover-open) {
@@ -656,11 +412,267 @@
       }
     }
   }
+
+  /* Kbd */
+  kbd {
+    @apply bg-muted text-muted-foreground pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm px-1 font-sans text-xs font-medium select-none [&_svg:not([class*='size-'])]:size-3;
+  }
+
+  /* Collapsible */
+  details {
+    &::details-content {
+      block-size: 0;
+      @apply block opacity-0 transition-discrete transition-all;
+    }
+    &[open]::details-content {
+      block-size: auto;
+      block-size: calc-size(auto, size);
+      @apply opacity-100;
+    }
+    summary {
+      @apply inline-flex items-center cursor-pointer;
+    }
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* Alert */
+@layer components {
+  bc-alert,
+  bc-alert[variant="destructive"] {
+    @apply relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current;
+
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6,
+    > strong,
+    > [data-title] {
+      @apply col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight;
+    }
+    > section {
+      @apply text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed;
+
+      ul {
+        @apply list-inside list-disc text-sm;
+      }
+    }
+  }
+  bc-alert:not([variant]) {
+    @apply bg-card text-card-foreground;
+  }
+  bc-alert[variant="destructive"] {
+    @apply text-destructive bg-card [&>svg]:text-current;
+
+    > section {
+      @apply text-destructive;
+    }
+  }
+}
+
+/* Badge */
+@layer components {
+  bc-badge {
+    @apply inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden;
+
+    &:not([variant]),
+    &[variant="primary"] {
+      @apply border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90;
+    }
+    &[variant="secondary"] {
+      @apply border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90;
+    }
+    &[variant="destructive"] {
+      @apply border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60;
+    }
+    &[variant="outline"] {
+      @apply text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground;
+    }
+  }
+}
+
+/* Button Group */
+@layer components {
+  bc-button-group {
+    @apply inline-flex w-fit items-stretch;
+
+    > *:focus-visible,
+    > :is(bc-dropdown, bc-popover, bc-select) > button:focus-visible {
+      @apply relative z-10;
+    }
+
+    > hr[role='separator'] {
+      @apply w-0 h-auto self-stretch border border-input shrink-0 m-0;
+    }
+
+    &:not([orientation='vertical']) {
+      > *:not(:first-child),
+      > :is(bc-dropdown, bc-popover, bc-select):not(:first-child) > button {
+        @apply rounded-l-none border-l-0;
+      }
+      > *:not(:last-child),
+      > :is(bc-dropdown, bc-popover, bc-select):not(:last-child) > button {
+        @apply rounded-r-none;
+      }
+    }
+    &[orientation='vertical'] {
+      @apply flex-col;
+
+      > hr[role='separator'] {
+        @apply w-auto h-px;
+      }
+
+      > *:not(:first-child),
+      > :is(bc-dropdown, bc-popover, bc-select):not(:first-child) > button {
+        @apply rounded-t-none border-t-0;
+      }
+      > *:not(:last-child),
+      > :is(bc-dropdown, bc-popover, bc-select):not(:last-child) > button {
+        @apply rounded-b-none;
+      }
+    }
+  }
+}
+
+/* Card */
+@layer components {
+  bc-card {
+    @apply bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm;
+
+    > header {
+      @apply @container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6;
+
+      h2 {
+        @apply leading-none font-semibold;
+      }
+      p {
+        @apply text-muted-foreground text-sm;
+      }
+    }
+    > section {
+      @apply px-6;
+    }
+    > footer {
+      @apply flex items-center px-6 [.border-t]:pt-6;
+    }
+  }
+}
+
+/* Command */
+@layer components {
+  dialog:has(bc-command) {
+    @apply inset-y-0 opacity-0 transition-all transition-discrete;
+
+    &:is([open], :popover-open) {
+      @apply opacity-100;
+
+      &::backdrop {
+        @apply opacity-100;
+      }
+      > * {
+        @apply scale-100;
+      }
+
+      @starting-style {
+        @apply opacity-0;
+
+        &::backdrop {
+          @apply opacity-0;
+        }
+        > * {
+          @apply scale-95;
+        }
+      }
+    }
+    &::backdrop {
+      @apply bg-black/50 opacity-0 transition-all transition-discrete;
+    }
+    > * {
+      @apply bg-background fixed top-[50%] left-[50%] z-50 flex flex-col w-full max-w-[calc(100%_-_2rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-lg border shadow-lg sm:max-w-lg max-h-[min(640px,calc(100%_-_2rem))];
+      @apply transition-all scale-95;
+
+      > button,
+      > form[method='dialog'] {
+        @apply absolute top-4 right-4;
+      }
+      > button,
+      > form[method='dialog'] > button {
+        @apply ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground  rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
+      }
+    }
+
+    bc-command {
+      > header input {
+        @apply h-12;
+      }
+      [role='menu'] {
+        @apply px-2;
+
+        [role='menuitem'] {
+          @apply py-3 px-2 [&_svg]:size-5;
+        }
+        [role='heading'] {
+          @apply px-2 py-1.5 font-medium text-muted-foreground;
+        }
+      }
+    }
+  }
+
+  bc-command {
+    > header {
+      @apply flex items-center border-b px-3 gap-2;
+
+      svg {
+        @apply size-4 shrink-0 opacity-50;
+      }
+      input {
+        @apply placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50 border-0 shadow-none ring-0 focus-visible:ring-0 focus-visible:border-0;
+      }
+    }
+    [role='menu'] {
+      @apply max-h-[300px] overflow-y-auto overflow-x-hidden p-1;
+
+      [role='menuitem'] {
+        @apply aria-hidden:hidden relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none aria-disabled:opacity-50 aria-disabled:pointer-events-none disabled:opacity-50 disabled:pointer-events-none w-full truncate [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
+
+        &.active {
+          @apply bg-accent text-accent-foreground;
+        }
+      }
+      [role='heading'] {
+        @apply text-muted-foreground flex px-2 py-1.5 text-xs font-medium;
+      }
+      [role='group']:not(:has([role='menuitem']:not([aria-hidden='true']))) {
+        @apply hidden;
+      }
+      [role='separator'] {
+        @apply border-border -mx-1 my-1;
+      }
+      &:not(:has([role='menuitem']:not([aria-hidden='true'])))::before {
+        @apply flex items-center justify-center py-6 px-3 text-sm truncate -m-1;
+      }
+      &[data-empty]:not(:has([role='menuitem']:not([aria-hidden='true'])))::before {
+        @apply content-[attr(data-empty)];
+      }
+      &:not([data-empty]):not(:has([role='menuitem']:not([aria-hidden='true'])))::before {
+        @apply content-['No_results_found'];
+      }
+    }
+    &:not([data-initialized]) [role='menuitem'] {
+      @apply hover:bg-accent hover:text-accent-foreground;
+    }
+    &:has(> header input:not(:placeholder-shown)) [role='separator'] {
+      @apply hidden;
+    }
+  }
 }
 
 /* Dropdown Menu */
 @layer components {
-  .dropdown-menu {
+  bc-dropdown {
     @apply relative inline-flex;
 
     [data-popover] {
@@ -687,7 +699,7 @@
         @apply border-border -mx-1 my-1;
       }
     }
-    &:not([data-dropdown-menu-initialized]) [data-popover] {
+    &:not([data-initialized]) [data-popover] {
       [role='menuitem'],
       [role='menuitemcheckbox'],
       [role='menuitemradio'] {
@@ -699,15 +711,19 @@
 
 /* Field */
 @layer components {
-  .fieldset {
+  fieldset {
     @apply flex flex-col gap-6;
 
     > legend {
       @apply text-base font-medium mb-3;
     }
   }
-  .field {
-    @apply flex flex-col w-full gap-3 data-[invalid=true]:text-destructive [&>*]:w-full [&>.sr-only]:w-auto;
+  bc-field {
+    @apply flex flex-col w-full gap-3 [&>*]:w-full [&>.sr-only]:w-auto;
+
+    &[invalid] {
+      @apply text-destructive;
+    }
 
     h2,
     h3 {
@@ -724,80 +740,20 @@
       @apply flex flex-1 flex-col gap-1.5 leading-snug;
     }
 
-    &[data-orientation='horizontal'] {
+    &[orientation='horizontal'] {
       @apply flex-row items-center [&>label]:flex-auto has-[>section]:items-start has-[>section]:[&>[type=checkbox],[type=radio]]:mt-px [&_p]:text-balance;
     }
   }
-  .fieldset legend + p,
-  .field > p,
-  .field section > p {
+  fieldset legend + p,
+  bc-field > p,
+  bc-field section > p {
     @apply text-muted-foreground text-sm leading-normal font-normal [&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4;
   }
-  .fieldset legend + p {
+  fieldset legend + p {
     @apply -mt-1.5;
   }
-  .field > p {
+  bc-field > p {
     @apply last:mt-0 nth-last-2:-mt-1;
-  }
-}
-
-/* Input */
-@layer components {
-  :is(.form, .field)
-    input[type='text']:not(
-      :is(.select [data-popover] > header input[role='combobox'], .command > header input, .dialog > * > header input)
-    ),
-  :is(.form, .field) input[type='email'],
-  :is(.form, .field) input[type='password'],
-  :is(.form, .field) input[type='number'],
-  :is(.form, .field) input[type='file'],
-  :is(.form, .field) input[type='tel'],
-  :is(.form, .field) input[type='url'],
-  :is(.form, .field)
-    input[type='search']:not(
-      :is(.select [data-popover] > header input[role='combobox'], .command > header input, .dialog > * > header input)
-    ),
-  :is(.form, .field) input[type='date'],
-  :is(.form, .field) input[type='datetime-local'],
-  :is(.form, .field) input[type='month'],
-  :is(.form, .field) input[type='week'],
-  :is(.form, .field) input[type='time'],
-  .input[type='text'],
-  .input[type='email'],
-  .input[type='password'],
-  .input[type='number'],
-  .input[type='file'],
-  .input[type='tel'],
-  .input[type='url'],
-  .input[type='search'],
-  .input[type='date'],
-  .input[type='datetime-local'],
-  .input[type='month'],
-  .input[type='week'],
-  .input[type='time'] {
-    @apply appearance-none file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
-    @apply focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px];
-    @apply aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive;
-  }
-}
-
-/* Kbd */
-@layer components {
-  .kbd {
-    @apply bg-muted text-muted-foreground pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm px-1 font-sans text-xs font-medium select-none [&_svg:not([class*='size-'])]:size-3;
-  }
-}
-
-/* Label */
-@layer components {
-  :is(.form, .field) label,
-  .label {
-    @apply flex items-center gap-2 text-sm leading-none font-medium select-none peer-disabled:pointer-events-none peer-disabled:opacity-50;
-
-    &:has(> *:disabled),
-    &:has(+ *:disabled) {
-      @apply opacity-50 pointer-events-none;
-    }
   }
 }
 
@@ -864,7 +820,7 @@
       }
     }
   }
-  .popover {
+  bc-popover {
     @apply relative inline-flex;
 
     [data-popover] {
@@ -873,80 +829,9 @@
   }
 }
 
-/* Radio */
+/* Select (custom) */
 @layer components {
-  :is(.form, .field) input[type='radio'],
-  .input[type='radio'] {
-    @apply appearance-none border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 aspect-square size-4 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 relative;
-
-    &:checked:before {
-      @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 content-[''] rounded-full size-2 bg-primary;
-    }
-  }
-}
-
-/* Range */
-@layer components {
-  :is(.form, .field) input[type='range'],
-  .input[type='range'] {
-    @apply appearance-none flex items-center p-0 outline-none;
-    --slider-value: 20%;
-
-    &:hover,
-    &:focus-visible {
-      &::-webkit-slider-thumb {
-        @apply ring-4;
-      }
-      &::-moz-range-thumb {
-        @apply ring-4;
-      }
-      &::-ms-thumb {
-        @apply ring-4;
-      }
-    }
-
-    &::-webkit-slider-thumb {
-      @apply appearance-none border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm -mt-1.25;
-    }
-    &::-webkit-slider-runnable-track {
-      @apply appearance-none rounded-full h-1.5 w-full;
-      background: linear-gradient(to right, var(--primary) var(--slider-value), var(--muted) var(--slider-value));
-    }
-    &::-moz-range-thumb {
-      @apply appearance-none border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm -mt-1.25;
-    }
-    &::-moz-range-track {
-      @apply appearance-none rounded-full h-1.5 w-full;
-      background: linear-gradient(to right, var(--primary) var(--slider-value), var(--muted) var(--slider-value));
-    }
-    &::-ms-thumb {
-      @apply appearance-none border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm -mt-1.25;
-    }
-    &::-ms-track {
-      @apply appearance-none rounded-full h-1.5 w-full;
-    }
-    &::-ms-fill-lower {
-      @apply bg-primary rounded-full;
-    }
-    &::-ms-fill-upper {
-      @apply bg-muted rounded-full;
-    }
-  }
-}
-
-/* Select */
-@layer components {
-  :is(.form, .field) select,
-  select.select {
-    @apply appearance-none border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent pl-3 pr-9 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 h-9;
-    @apply bg-[image:var(--chevron-down-icon-50)] bg-no-repeat bg-position-[center_right_0.75rem] bg-size-[1rem];
-
-    option,
-    optgroup {
-      @apply bg-popover text-popover-foreground;
-    }
-  }
-  *:not(select).select {
+  bc-select {
     @apply relative inline-flex;
 
     & > button {
@@ -987,7 +872,7 @@
           @apply size-4 shrink-0 opacity-50;
         }
         input[role='combobox'] {
-          @apply placeholder:text-muted-foreground flex h-10 flex-1 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50 min-w-0;
+          @apply placeholder:text-muted-foreground flex h-10 flex-1 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50 min-w-0 border-0 shadow-none ring-0 focus-visible:ring-0 focus-visible:border-0;
         }
       }
       [role='listbox']:not(:has([data-value]:not([aria-hidden='true'])))::before {
@@ -1003,7 +888,7 @@
     [data-popover]:has(> header input:not(:placeholder-shown)) [role='separator'] {
       @apply hidden;
     }
-    &:not([data-select-initialized]) [data-popover] [role='option'] {
+    &:not([data-initialized]) [data-popover] [role='option'] {
       @apply hover:bg-accent hover:text-accent-foreground;
     }
   }
@@ -1011,8 +896,8 @@
 
 /* Sidebar */
 @layer components {
-  .sidebar {
-    &:not([data-sidebar-initialized]) {
+  bc-sidebar {
+    &:not([data-initialized]) {
       @apply max-md:hidden;
     }
     &:not([aria-hidden]),
@@ -1025,8 +910,8 @@
     & + * {
       @apply transition-[margin] ease-in-out duration-300;
     }
-    &:not([data-side]),
-    &[data-side='left'] {
+    &:not([side]),
+    &[side='left'] {
       nav {
         @apply left-0 border-r;
       }
@@ -1042,7 +927,7 @@
         }
       }
     }
-    &[data-side='right'] {
+    &[side='right'] {
       nav {
         @apply right-0 border-l;
       }
@@ -1131,49 +1016,9 @@
   }
 }
 
-/* Switch */
-@layer components {
-  :is(.form, .field) input[type='checkbox'][role='switch'],
-  .input[type='checkbox'][role='switch'] {
-    @apply appearance-none focus-visible:border-ring focus-visible:ring-ring/50 inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50;
-    @apply bg-input dark:bg-input/80 checked:bg-primary dark:checked:bg-primary;
-    @apply before:content-[''] before:pointer-events-none before:block before:size-4 before:rounded-full before:ring-0 before:transition-all;
-    @apply before:bg-background dark:before:bg-foreground;
-    @apply dark:checked:before:bg-primary-foreground checked:before:ms-3.5;
-  }
-}
-
-/* Tables */
-@layer components {
-  .table {
-    @apply w-full caption-bottom text-sm;
-    thead {
-      @apply [&_tr]:border-b;
-    }
-    tbody {
-      @apply [&_tr:last-child]:border-0;
-    }
-    tfoot {
-      @apply bg-muted/50 border-t font-medium [&>tr]:last:border-b-0;
-    }
-    tr {
-      @apply hover:bg-muted/50 border-b transition-colors;
-    }
-    th {
-      @apply text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px];
-    }
-    td {
-      @apply p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px];
-    }
-    caption {
-      @apply text-muted-foreground mt-4 text-sm;
-    }
-  }
-}
-
 /* Tabs */
 @layer components {
-  .tabs {
+  bc-tabs {
     @apply flex flex-col gap-2;
 
     [role='tablist'] {
@@ -1193,17 +1038,9 @@
   }
 }
 
-/* Textarea */
-@layer components {
-  :is(.form, .field) textarea,
-  .textarea {
-    @apply border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
-  }
-}
-
 /* Toasts */
 @layer components {
-  .toaster {
+  bc-toaster {
     @apply fixed bottom-0 p-4 pointer-events-none z-50 w-full sm:max-w-90 flex flex-col-reverse;
 
     &:not([data-align]),

@@ -122,14 +122,13 @@ async function build() {
   // Create combined component files
   console.log('Creating combined component files...')
   const componentsToCombine = [
-    'basecoat.js',
-    'command.js',
-    'dropdown-menu.js',
-    'popover.js',
-    'select.js',
-    'sidebar.js',
-    'tabs.js',
-    'toast.js',
+    'bc-command.js',
+    'bc-dropdown.js',
+    'bc-popover.js',
+    'bc-select.js',
+    'bc-sidebar.js',
+    'bc-tabs.js',
+    'bc-toaster.js',
   ]
   const componentPaths = componentsToCombine.map((f) => path.join(srcJsDir, f))
 

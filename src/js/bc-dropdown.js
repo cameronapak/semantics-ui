@@ -1,7 +1,9 @@
-;(() => {
-  const initDropdownMenu = (dropdownMenuComponent) => {
-    const trigger = dropdownMenuComponent.querySelector(':scope > button')
-    const popover = dropdownMenuComponent.querySelector(':scope > [data-popover]')
+class BcDropdown extends HTMLElement {
+  connectedCallback() {
+    if (this.dataset.initialized) return
+
+    const trigger = this.querySelector(':scope > button')
+    const popover = this.querySelector(':scope > [data-popover]')
     const menu = popover.querySelector('[role="menu"]')
 
     if (!trigger || !menu || !popover) {
@@ -9,7 +11,7 @@
       if (!trigger) missing.push('trigger')
       if (!menu) missing.push('menu')
       if (!popover) missing.push('popover')
-      console.error(`Dropdown menu initialisation failed. Missing element(s): ${missing.join(', ')}`, dropdownMenuComponent)
+      console.error(`Dropdown menu initialisation failed. Missing element(s): ${missing.join(', ')}`, this)
       return
     }
 
@@ -32,7 +34,7 @@
     const openPopover = (initialSelection = false) => {
       document.dispatchEvent(
         new CustomEvent('basecoat:popover', {
-          detail: { source: dropdownMenuComponent },
+          detail: { source: this },
         })
       )
 
@@ -74,7 +76,7 @@
       }
     })
 
-    dropdownMenuComponent.addEventListener('keydown', (event) => {
+    this.addEventListener('keydown', (event) => {
       const isExpanded = trigger.getAttribute('aria-expanded') === 'true'
 
       if (event.key === 'Escape') {
@@ -151,22 +153,19 @@
     })
 
     document.addEventListener('click', (event) => {
-      if (!dropdownMenuComponent.contains(event.target)) {
+      if (!this.contains(event.target)) {
         closePopover()
       }
     })
 
     document.addEventListener('basecoat:popover', (event) => {
-      if (event.detail.source !== dropdownMenuComponent) {
+      if (event.detail.source !== this) {
         closePopover(false)
       }
     })
 
-    dropdownMenuComponent.dataset.dropdownMenuInitialized = true
-    dropdownMenuComponent.dispatchEvent(new CustomEvent('basecoat:initialized'))
+    this.dataset.initialized = 'true'
+    this.dispatchEvent(new CustomEvent('basecoat:initialized'))
   }
-
-  if (window.basecoat) {
-    window.basecoat.register('dropdown-menu', '.dropdown-menu:not([data-dropdown-menu-initialized])', initDropdownMenu)
-  }
-})()
+}
+customElements.define('bc-dropdown', BcDropdown)

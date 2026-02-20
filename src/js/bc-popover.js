@@ -1,13 +1,15 @@
-;(() => {
-  const initPopover = (popoverComponent) => {
-    const trigger = popoverComponent.querySelector(':scope > button')
-    const content = popoverComponent.querySelector(':scope > [data-popover]')
+class BcPopover extends HTMLElement {
+  connectedCallback() {
+    if (this.dataset.initialized) return
+
+    const trigger = this.querySelector(':scope > button')
+    const content = this.querySelector(':scope > [data-popover]')
 
     if (!trigger || !content) {
       const missing = []
       if (!trigger) missing.push('trigger')
       if (!content) missing.push('content')
-      console.error(`Popover initialisation failed. Missing element(s): ${missing.join(', ')}`, popoverComponent)
+      console.error(`Popover initialisation failed. Missing element(s): ${missing.join(', ')}`, this)
       return
     }
 
@@ -23,7 +25,7 @@
     const openPopover = () => {
       document.dispatchEvent(
         new CustomEvent('basecoat:popover', {
-          detail: { source: popoverComponent },
+          detail: { source: this },
         })
       )
 
@@ -51,29 +53,26 @@
       }
     })
 
-    popoverComponent.addEventListener('keydown', (event) => {
+    this.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
         closePopover()
       }
     })
 
     document.addEventListener('click', (event) => {
-      if (!popoverComponent.contains(event.target)) {
+      if (!this.contains(event.target)) {
         closePopover()
       }
     })
 
     document.addEventListener('basecoat:popover', (event) => {
-      if (event.detail.source !== popoverComponent) {
+      if (event.detail.source !== this) {
         closePopover(false)
       }
     })
 
-    popoverComponent.dataset.popoverInitialized = true
-    popoverComponent.dispatchEvent(new CustomEvent('basecoat:initialized'))
+    this.dataset.initialized = 'true'
+    this.dispatchEvent(new CustomEvent('basecoat:initialized'))
   }
-
-  if (window.basecoat) {
-    window.basecoat.register('popover', '.popover:not([data-popover-initialized])', initPopover)
-  }
-})()
+}
+customElements.define('bc-popover', BcPopover)

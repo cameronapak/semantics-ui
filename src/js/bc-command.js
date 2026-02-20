@@ -1,13 +1,15 @@
-;(() => {
-  const initCommand = (container) => {
-    const input = container.querySelector('header input')
-    const menu = container.querySelector('[role="menu"]')
+class BcCommand extends HTMLElement {
+  connectedCallback() {
+    if (this.dataset.initialized) return
+
+    const input = this.querySelector('header input')
+    const menu = this.querySelector('[role="menu"]')
 
     if (!input || !menu) {
       const missing = []
       if (!input) missing.push('input')
       if (!menu) missing.push('menu')
-      console.error(`Command component initialization failed. Missing element(s): ${missing.join(', ')}`, container)
+      console.error(`Command component initialization failed. Missing element(s): ${missing.join(', ')}`, this)
       return
     }
 
@@ -133,7 +135,7 @@
     menu.addEventListener('click', (event) => {
       const clickedItem = event.target.closest('[role="menuitem"]')
       if (clickedItem && visibleMenuItems.includes(clickedItem)) {
-        const dialog = container.closest('dialog.command-dialog')
+        const dialog = this.closest('dialog')
         if (dialog && !clickedItem.hasAttribute('data-keep-command-open')) {
           dialog.close()
         }
@@ -147,11 +149,8 @@
       visibleMenuItems[0].scrollIntoView({ block: 'nearest' })
     }
 
-    container.dataset.commandInitialized = true
-    container.dispatchEvent(new CustomEvent('basecoat:initialized'))
+    this.dataset.initialized = 'true'
+    this.dispatchEvent(new CustomEvent('basecoat:initialized'))
   }
-
-  if (window.basecoat) {
-    window.basecoat.register('command', '.command:not([data-command-initialized])', initCommand)
-  }
-})()
+}
+customElements.define('bc-command', BcCommand)
