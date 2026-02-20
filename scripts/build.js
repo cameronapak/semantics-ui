@@ -122,8 +122,13 @@ async function build() {
   // Create combined component files
   console.log('Creating combined component files...')
   const componentsToCombine = [
+    'bc-alert.js',
+    'bc-badge.js',
+    'bc-button-group.js',
+    'bc-card.js',
     'bc-command.js',
     'bc-dropdown.js',
+    'bc-field.js',
     'bc-popover.js',
     'bc-select.js',
     'bc-sidebar.js',
