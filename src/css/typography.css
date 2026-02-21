@@ -101,6 +101,14 @@
   }
 
   a[href] {
-    @apply underline underline-offset-2;
+    @apply inline-block text-foreground underline underline-offset-2 transition-all duration-100;
+
+    &:hover {
+      @apply text-muted-foreground;
+    }
+
+    &:active {
+      @apply translate-y-[1px];
+    }
   }
 }
