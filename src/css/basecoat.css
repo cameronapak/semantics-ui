@@ -165,8 +165,7 @@
       @apply size-9;
     }
 
-    /* Primary (default variant) */
-    &:not([data-variant]),
+    /* Primary */
     &[data-variant='primary'] {
       @apply bg-primary text-primary-foreground shadow-xs hover:bg-primary/90;
       &[aria-pressed='true'] {
@@ -182,6 +181,7 @@
       }
     }
     /* Outline */
+    &:not([data-variant]),
     &[data-variant='outline'] {
       @apply border bg-background shadow-xs dark:bg-input/30 dark:border-input;
       &:hover,

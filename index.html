@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Basecoat – Kitchen Sink</title>
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./src/css/basecoat.cdn.css" />
   </head>
 
   <body class="min-h-screen bg-background text-foreground p-8">
@@ -442,7 +442,7 @@
             <div class="flex flex-col gap-6">
               <!-- Default size -->
               <div class="flex flex-wrap items-center gap-2">
-                <button>Primary</button>
+                <button data-variant="primary">Primary</button>
                 <button data-variant="outline">Outline</button>
                 <button data-variant="ghost">Ghost</button>
                 <button data-variant="destructive">Danger</button>
@@ -502,7 +502,7 @@
               </div>
               <!-- Small size -->
               <div class="flex flex-wrap items-center gap-2">
-                <button data-size="sm">Primary</button>
+                <button data-variant="primary" data-size="sm">Primary</button>
                 <button data-variant="outline" data-size="sm">Outline</button>
                 <button data-variant="ghost" data-size="sm">Ghost</button>
                 <button data-variant="destructive" data-size="sm">Danger</button>
@@ -562,7 +562,7 @@
               </div>
               <!-- Large size -->
               <div class="flex flex-wrap items-center gap-2">
-                <button data-size="lg">Primary</button>
+                <button data-variant="primary" data-size="lg">Primary</button>
                 <button data-variant="outline" data-size="lg">Outline</button>
                 <button data-variant="ghost" data-size="lg">Ghost</button>
                 <button data-variant="destructive" data-size="lg">Danger</button>
@@ -652,7 +652,7 @@
                   </div>
                 </section>
                 <footer>
-                  <button class="w-full">Login</button>
+                  <button data-variant="primary" class="w-full">Login</button>
                 </footer>
               </bc-card>
 
@@ -782,7 +782,7 @@
                     </div>
                   </section>
                   <footer>
-                    <button onclick="document.getElementById('dialog-edit-profile').close()">Save changes</button>
+                    <button data-variant="primary" onclick="document.getElementById('dialog-edit-profile').close()">Save changes</button>
                   </footer>
                   <form method="dialog">
                     <button class="cursor-pointer" aria-label="Close">
@@ -1011,7 +1011,7 @@
                 </bc-field>
               </bc-field>
 
-              <button type="submit" class="w-fit">Submit</button>
+              <button data-variant="primary" type="submit" class="w-fit">Submit</button>
             </form>
           </div>
         </section>
@@ -1363,7 +1363,7 @@
                     </div>
                   </section>
                   <footer>
-                    <button>Save changes</button>
+                    <button data-variant="primary">Save changes</button>
                   </footer>
                 </bc-card>
               </div>
@@ -1386,7 +1386,7 @@
                     </div>
                   </section>
                   <footer>
-                    <button>Save Password</button>
+                    <button data-variant="primary">Save Password</button>
                   </footer>
                 </bc-card>
               </div>
@@ -1430,6 +1430,7 @@
           <div class="p-4">
             <div class="flex flex-wrap gap-2">
               <button
+                data-variant="primary"
                 onclick="
                   document.dispatchEvent(
                     new CustomEvent('basecoat:toast', {
