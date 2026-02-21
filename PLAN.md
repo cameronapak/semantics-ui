@@ -5,7 +5,7 @@
 Two types of components:
 
 1. **Native elements styled directly** — `<button>`, `<input>`, `<table>`, `<details>`, etc. get styled globally. Variants via `data-*` attributes. No classes needed.
-2. **Custom elements (light DOM)** — For concepts with no native HTML equivalent: `<bc-alert>`, `<bc-badge>`, `<bc-dropdown>`, etc. No Shadow DOM — global CSS cascades in. Variants via element attributes.
+2. **Custom elements (light DOM)** — For concepts with no native HTML equivalent: `<bc-badge>`, `<bc-dropdown>`, etc. No Shadow DOM — global CSS cascades in. Variants via element attributes.
 
 **Why no Shadow DOM?** Basecoat is a CSS framework built on Tailwind. Shadow DOM blocks CSS cascade = breaks the entire value prop. Light DOM custom elements give us the nice `<bc-*>` tag API without the encapsulation pain.
 

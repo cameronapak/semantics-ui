@@ -25,7 +25,7 @@
           <div class="p-4">
             <div class="grid max-w-xl items-start gap-4">
               <!-- Icon + title + description -->
-              <bc-alert>
+              <div role="alert">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -42,10 +42,10 @@
                 </svg>
                 <h2>Success! Your changes have been saved</h2>
                 <section>This is an alert with icon, title and description.</section>
-              </bc-alert>
+              </div>
 
               <!-- Icon + description, no title -->
-              <bc-alert>
+              <div role="alert">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -61,15 +61,15 @@
                   <path d="m9 10 2 2 4-4" />
                 </svg>
                 <section>This is an alert with icon, description and no title.</section>
-              </bc-alert>
+              </div>
 
               <!-- Description only -->
-              <bc-alert>
+              <div role="alert">
                 <section>This one has a description only. No title. No icon.</section>
-              </bc-alert>
+              </div>
 
               <!-- Destructive alert -->
-              <bc-alert variant="destructive">
+              <div role="alert" data-variant="destructive">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -87,10 +87,10 @@
                 </svg>
                 <h2>Something went wrong!</h2>
                 <section>Your session has expired. Please log in again.</section>
-              </bc-alert>
+              </div>
 
               <!-- Destructive with list -->
-              <bc-alert variant="destructive">
+              <div role="alert" data-variant="destructive">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -115,10 +115,13 @@
                     <li>Verify billing address</li>
                   </ul>
                 </section>
-              </bc-alert>
+              </div>
 
               <!-- Custom colored alert -->
-              <bc-alert class="border-amber-50 bg-amber-50 text-amber-900 dark:border-amber-950 dark:bg-amber-950 dark:text-amber-100">
+              <div
+                role="alert"
+                class="border-amber-50 bg-amber-50 text-amber-900 dark:border-amber-950 dark:bg-amber-950 dark:text-amber-100"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -135,7 +138,7 @@
                 </svg>
                 <h2>Plot Twist: This Alert is Actually Amber!</h2>
                 <section>This one has custom colors for light and dark mode.</section>
-              </bc-alert>
+              </div>
             </div>
           </div>
         </section>
@@ -1504,7 +1507,6 @@
     <bc-toaster></bc-toaster>
 
     <!-- Component JS -->
-    <script type="module" src="./src/js/bc-alert.js"></script>
     <script type="module" src="./src/js/bc-badge.js"></script>
     <script type="module" src="./src/js/bc-button-group.js"></script>
     <script type="module" src="./src/js/bc-card.js"></script>
