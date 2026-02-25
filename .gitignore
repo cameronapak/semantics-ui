@@ -1,12 +1,8 @@
 .*
 !.gitignore
 !.gitattributes
-!.eleventy.js
 
-_site/
 node_modules/
-packages/cli/dist/
-packages/css/dist/
 
 # Logs
 npm-debug.log*
