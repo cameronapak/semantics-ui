@@ -1,11 +1,13 @@
-;(() => {
-  const initSelect = (selectComponent) => {
-    const trigger = selectComponent.querySelector(':scope > button')
+class BcSelect extends HTMLElement {
+  connectedCallback() {
+    if (this.dataset.initialized) return
+
+    const trigger = this.querySelector(':scope > button')
     const selectedLabel = trigger.querySelector(':scope > span')
-    const popover = selectComponent.querySelector(':scope > [data-popover]')
+    const popover = this.querySelector(':scope > [data-popover]')
     const listbox = popover ? popover.querySelector('[role="listbox"]') : null
-    const input = selectComponent.querySelector(':scope > input[type="hidden"]')
-    const filter = selectComponent.querySelector('header input[type="text"]')
+    const input = this.querySelector(':scope > input[type="hidden"]')
+    const filter = this.querySelector('header input[type="text"]')
 
     if (!trigger || !popover || !listbox || !input) {
       const missing = []
@@ -13,7 +15,7 @@
       if (!popover) missing.push('popover')
       if (!listbox) missing.push('listbox')
       if (!input) missing.push('input')
-      console.error(`Select component initialisation failed. Missing element(s): ${missing.join(', ')}`, selectComponent)
+      console.error(`Select component initialisation failed. Missing element(s): ${missing.join(', ')}`, this)
       return
     }
 
@@ -23,8 +25,8 @@
     let activeIndex = -1
     const isMultiple = listbox.getAttribute('aria-multiselectable') === 'true'
     const selectedOptions = isMultiple ? new Set() : null
-    const placeholder = isMultiple ? selectComponent.dataset.placeholder || '' : null
-    const closeOnSelect = selectComponent.dataset.closeOnSelect === 'true'
+    const placeholder = isMultiple ? this.dataset.placeholder || '' : null
+    const closeOnSelect = this.dataset.closeOnSelect === 'true'
 
     const getValue = (opt) => opt.dataset.value ?? opt.textContent.trim()
 
@@ -91,7 +93,7 @@
       })
 
       if (triggerEvent) {
-        selectComponent.dispatchEvent(
+        this.dispatchEvent(
           new CustomEvent('change', {
             detail: { value },
             bubbles: true,
@@ -324,7 +326,7 @@
     const openPopover = () => {
       document.dispatchEvent(
         new CustomEvent('basecoat:popover', {
-          detail: { source: selectComponent },
+          detail: { source: this },
         })
       )
 
@@ -389,13 +391,13 @@
     })
 
     document.addEventListener('click', (event) => {
-      if (!selectComponent.contains(event.target)) {
+      if (!this.contains(event.target)) {
         closePopover(false)
       }
     })
 
     document.addEventListener('basecoat:popover', (event) => {
-      if (event.detail.source !== selectComponent) {
+      if (event.detail.source !== this) {
         closePopover(false)
       }
     })
@@ -403,7 +405,7 @@
     popover.setAttribute('aria-hidden', 'true')
 
     // Public API
-    Object.defineProperty(selectComponent, 'value', {
+    Object.defineProperty(this, 'value', {
       get: () => {
         if (isMultiple) {
           return options.filter((opt) => selectedOptions.has(opt)).map(getValue)
@@ -430,19 +432,16 @@
       },
     })
 
-    selectComponent.select = select
-    selectComponent.selectByValue = select // Backward compatibility alias
+    this.select = select
+    this.selectByValue = select
     if (isMultiple) {
-      selectComponent.deselect = deselect
-      selectComponent.toggle = toggle
-      selectComponent.selectAll = () => updateValue(options)
-      selectComponent.selectNone = () => updateValue([])
+      this.deselect = deselect
+      this.toggle = toggle
+      this.selectAll = () => updateValue(options)
+      this.selectNone = () => updateValue([])
     }
-    selectComponent.dataset.selectInitialized = true
-    selectComponent.dispatchEvent(new CustomEvent('basecoat:initialized'))
+    this.dataset.initialized = 'true'
+    this.dispatchEvent(new CustomEvent('basecoat:initialized'))
   }
-
-  if (window.basecoat) {
-    window.basecoat.register('select', 'div.select:not([data-select-initialized])', initSelect)
-  }
-})()
+}
+customElements.define('bc-select', BcSelect)

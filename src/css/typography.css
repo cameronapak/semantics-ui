@@ -1,0 +1,110 @@
+@layer typography {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply scroll-m-20 font-semibold tracking-tight text-balance;
+
+    &:first-child {
+      margin-block-start: 0;
+    }
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
+  h1 {
+    @apply text-3xl tracking-tight text-balance mt-10 mb-6;
+  }
+
+  h2 {
+    @apply text-2xl mt-8 mb-5;
+  }
+
+  h3 {
+    @apply text-xl mt-6 mb-4;
+  }
+
+  h4 {
+    @apply text-lg mt-5 mb-3;
+  }
+
+  h5 {
+    @apply text-lg mt-4 mb-2;
+  }
+
+  h6 {
+    @apply text-base mt-4 mb-2;
+  }
+
+  strong,
+  b {
+    @apply font-semibold;
+  }
+
+  em,
+  i {
+    @apply italic;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  :not(pre) > code {
+    @apply font-mono text-sm py-0.5 px-1 bg-secondary rounded-sm;
+  }
+
+  pre {
+    @apply font-mono p-4 bg-secondary rounded-md overflow-x-auto mb-4 whitespace-pre;
+
+    & code {
+      @apply text-sm;
+    }
+  }
+
+  blockquote {
+    @apply border-s-4 ps-4 my-4 italic text-muted-foreground;
+  }
+
+  hr {
+    @apply my-8;
+  }
+
+  ul {
+    @apply list-disc ps-6 mb-4;
+
+    & li {
+      @apply mb-1;
+    }
+  }
+
+  ol {
+    @apply list-decimal ps-6 mb-4;
+
+    & li {
+      @apply mb-1;
+    }
+  }
+
+  a[href]:not(.button) {
+    @apply inline-block text-foreground underline underline-offset-2 transition-all duration-100;
+
+    &:hover {
+      @apply text-muted-foreground;
+    }
+
+    &:active {
+      @apply translate-y-px;
+    }
+  }
+}

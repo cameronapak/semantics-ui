@@ -3,74 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Basecoat – Component Preview</title>
-    <link rel="stylesheet" href="./src/css/basecoat.cdn.css" />
+    <title>semantics/ui CSS</title>
+    <link rel="stylesheet" href="./src/css/index.css" />
   </head>
+
   <body class="min-h-screen bg-background text-foreground p-8">
-    <div class="mx-auto max-w-3xl space-y-8">
-      <h1 class="text-3xl font-bold">Basecoat Components</h1>
-      <p class="text-muted-foreground">
-        A dev playground for previewing components. Edit this file to test.
-      </p>
+    <div class="mx-auto max-w-3xl">
+      <h1>semantics/ui CSS</h1>
+      <p class="text-muted-foreground">Imagine Shadcn UI styles by default</p>
 
-      <!-- Button variants -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Buttons</h2>
-        <div class="flex flex-wrap gap-2">
-          <button class="btn btn-default">Default</button>
-          <button class="btn btn-primary">Primary</button>
-          <button class="btn btn-secondary">Secondary</button>
-          <button class="btn btn-destructive">Destructive</button>
-          <button class="btn btn-outline">Outline</button>
-          <button class="btn btn-ghost">Ghost</button>
-          <button class="btn btn-link">Link</button>
-        </div>
-      </section>
+      <hr />
 
-      <!-- Card -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Card</h2>
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Card Title</h3>
-            <p class="card-description">Card description goes here.</p>
-          </div>
-          <div class="card-content">
-            <p>Card content area.</p>
-          </div>
-          <div class="card-footer">
-            <button class="btn btn-primary">Action</button>
-          </div>
-        </div>
-      </section>
+      <h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6>
 
-      <!-- Badge -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Badges</h2>
-        <div class="flex flex-wrap gap-2">
-          <span class="badge badge-default">Default</span>
-          <span class="badge badge-secondary">Secondary</span>
-          <span class="badge badge-destructive">Destructive</span>
-          <span class="badge badge-outline">Outline</span>
-        </div>
-      </section>
+      <p>This is a paragraph with <strong>bold text</strong>, <em>italic text</em>, and <a href="#">a link</a>.</p>
 
-      <!-- Input -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Input</h2>
-        <input type="text" class="input" placeholder="Type something..." />
-      </section>
+      <p>Here's some <code>inline code</code> and a code block:</p>
 
-      <!-- Alert -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Alert</h2>
-        <div class="alert">
-          <h4 class="alert-title">Heads up!</h4>
-          <p class="alert-description">This is an alert component.</p>
-        </div>
-      </section>
+      <pre><code>console.log('Hello, World!');</code></pre>
+
+      <blockquote>This is a blockquote. It's styled automatically.</blockquote>
+
+      <hr />
+
+      <ul>
+        <li>Unordered list item 1</li>
+        <li>Unordered list item 2</li>
+        <li>Unordered list item 3</li>
+      </ul>
+
+      <ol>
+        <li>Ordered list item 1</li>
+        <li>Ordered list item 2</li>
+        <li>Ordered list item 3</li>
+      </ol>
+
+      <h2>Buttons</h2>
+
+      <h3>Variants</h3>
+      <div class="flex flex-wrap gap-2">
+        <button>Primary (default)</button>
+        <button data-variant="secondary">Secondary</button>
+        <button data-variant="outline">Outline</button>
+        <button data-variant="ghost">Ghost</button>
+        <button data-variant="link">Link</button>
+        <button data-variant="destructive">Destructive</button>
+      </div>
+
+      <h3>Sizes</h3>
+      <div class="flex flex-wrap items-center gap-2">
+        <button data-variant="primary" data-size="sm">Small</button>
+        <button data-variant="primary">Default</button>
+        <button data-variant="primary" data-size="lg">Large</button>
+        <button data-variant="primary" data-size="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14" />
+            <path d="M12 5v14" />
+          </svg>
+        </button>
+      </div>
+
+      <h3>States</h3>
+      <div class="flex flex-wrap gap-2">
+        <button data-variant="primary" disabled>Disabled</button>
+        <button data-variant="primary" aria-pressed="true">Pressed</button>
+      </div>
+
+      <h3>As Link</h3>
+      <div class="flex flex-wrap gap-2">
+        <a href="#" class="button" data-variant="primary">Link as Button</a>
+      </div>
     </div>
-
-    <script type="module" src="./src/js/basecoat.js"></script>
   </body>
 </html>

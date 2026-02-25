@@ -1,17 +1,19 @@
-;(() => {
-  const initSidebar = (sidebarComponent) => {
-    const initialOpen = sidebarComponent.dataset.initialOpen !== 'false'
-    const initialMobileOpen = sidebarComponent.dataset.initialMobileOpen === 'true'
-    const breakpoint = parseInt(sidebarComponent.dataset.breakpoint) || 768
+class BcSidebar extends HTMLElement {
+  connectedCallback() {
+    if (this.dataset.initialized) return
+
+    const initialOpen = this.hasAttribute('open')
+    const initialMobileOpen = this.getAttribute('mobile-open') === 'true'
+    const breakpoint = parseInt(this.getAttribute('breakpoint')) || 768
 
     let open = breakpoint > 0 ? (window.innerWidth >= breakpoint ? initialOpen : initialMobileOpen) : initialOpen
 
     const updateState = () => {
-      sidebarComponent.setAttribute('aria-hidden', !open)
+      this.setAttribute('aria-hidden', !open)
       if (open) {
-        sidebarComponent.removeAttribute('inert')
+        this.removeAttribute('inert')
       } else {
-        sidebarComponent.setAttribute('inert', '')
+        this.setAttribute('inert', '')
       }
     }
 
@@ -20,7 +22,7 @@
       updateState()
     }
 
-    const sidebarId = sidebarComponent.id
+    const sidebarId = this.id
 
     document.addEventListener('basecoat:sidebar', (event) => {
       if (event.detail?.id && event.detail.id !== sidebarId) return
@@ -38,9 +40,9 @@
       }
     })
 
-    sidebarComponent.addEventListener('click', (event) => {
+    this.addEventListener('click', (event) => {
       const target = event.target
-      const nav = sidebarComponent.querySelector('nav')
+      const nav = this.querySelector('nav')
 
       const isMobile = window.innerWidth < breakpoint
 
@@ -50,18 +52,15 @@
         return
       }
 
-      if (target === sidebarComponent || (nav && !nav.contains(target))) {
+      if (target === this || (nav && !nav.contains(target))) {
         if (document.activeElement) document.activeElement.blur()
         setState(false)
       }
     })
 
     updateState()
-    sidebarComponent.dataset.sidebarInitialized = true
-    sidebarComponent.dispatchEvent(new CustomEvent('basecoat:initialized'))
+    this.dataset.initialized = 'true'
+    this.dispatchEvent(new CustomEvent('basecoat:initialized'))
   }
-
-  if (window.basecoat) {
-    window.basecoat.register('sidebar', '.sidebar:not([data-sidebar-initialized])', initSidebar)
-  }
-})()
+}
+customElements.define('bc-sidebar', BcSidebar)
