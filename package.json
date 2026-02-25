@@ -1,8 +1,8 @@
 {
   "name": "semantics-ui",
-  "version": "0.3.11",
-  "description": "shadcn/ui for the rest of us",
-  "author": "hunvreus",
+  "version": "0.0.1",
+  "description": "Imagining Shadcn UI styles by default via a semantic CSS UI library",
+  "author": "cameronapak",
   "type": "module",
   "private": true,
   "workspaces": [
@@ -24,12 +24,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hunvreus/basecoat.git"
+    "url": "git+https://github.com/cameronapak/semantics-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/hunvreus/basecoat/issues"
+    "url": "https://github.com/cameronapak/semantics-ui/issues"
   },
-  "homepage": "https://github.com/hunvreus/basecoat#readme",
+  "homepage": "https://github.com/cameronapak/semantics-ui#readme",
   "scripts": {
     "dev": "bun --hot index.ts"
   },
