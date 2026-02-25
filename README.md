@@ -7,6 +7,9 @@ A (work-in-progress) semantic CSS component library — style native HTML elemen
 
 ![Banner](./banner.png)
 
+![Banner 2](./banner-2.png)
+
+
 ## Features
 
 - **Semantic HTML** (as much as possible): Native elements like `<button>`, `<input>`, `<dialog>` are styled automatically
