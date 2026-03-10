@@ -59,7 +59,15 @@
     @apply flex flex-col gap-4 border rounded-lg p-4;
 
     legend {
-      @apply px-2 text-sm leading-none font-medium select-none;
+      @apply text-sm leading-none font-medium select-none text-muted-foreground;
+    }
+
+    ul:has(> li) {
+      @apply contents ps-0!;
+
+      li {
+        @apply list-none;
+      }
     }
   }
 
