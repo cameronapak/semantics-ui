@@ -20,32 +20,6 @@
     }
   }
 
-  / * Table * /
-  table {
-    @apply w-full caption-bottom text-sm;
-    thead {
-      @apply [&_tr]:border-b;
-    }
-    tbody {
-      @apply [&_tr:last-child]:border-0;
-    }
-    tfoot {
-      @apply bg-muted/50 border-t font-medium [&>tr]:last:border-b-0;
-    }
-    tr {
-      @apply hover:bg-muted/50 border-b transition-colors;
-    }
-    th {
-      @apply text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px];
-    }
-    td {
-      @apply p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px];
-    }
-    caption {
-      @apply text-muted-foreground mt-4 text-sm;
-    }
-  }
-
   / * Dialog * /
   dialog {
     @apply inset-y-0 opacity-0 transition-all transition-discrete;
@@ -103,11 +77,6 @@
         @apply ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground  rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4;
       }
     }
-  }
-
-  / * Kbd * /
-  kbd {
-    @apply bg-muted text-muted-foreground pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm px-1 font-sans text-xs font-medium select-none [&_svg:not([class*='size-'])]:size-3;
   }
 
   / * Collapsible * /
