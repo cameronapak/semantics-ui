@@ -84,6 +84,83 @@
 
       <h3>As Link</h3>
       <a href="#" class="button" data-variant="primary">Link as Button</a>
+
+      <h2>Form elements</h2>
+      <form>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="john.doe@gmail.com" />
+        </div>
+
+        <div>
+          <label for="id">User id (read only)</label>
+          <input readonly name="id" id="id" value="04D6H89Z" />
+        </div>
+
+        <div>
+          <label for="disabled">Random disabled input</label>
+          <input disabled name="disabled" id="disabled" placeholder="Because why not?" />
+        </div>
+
+        <div>
+          <label for="about">About me</label>
+          <textarea name="about" id="about" placeholder="I am a textarea..."></textarea>
+        </div>
+
+        <div>
+          <input type="checkbox" name="remember" id="remember" />
+          <label for="remember">Remember me</label>
+        </div>
+
+        <div>
+          <label>
+            <input type="checkbox" name="in-label" id="in-label" checked />
+            Is this checkbox inside a <code>&lt;label&gt;</code> element?
+          </label>
+        </div>
+
+        <div>
+          <fieldset>
+            <legend>Choose a cardinal direction:</legend>
+
+            <div>
+              <input type="radio" id="north" name="direction" value="north" checked />
+              <label for="north">North</label>
+            </div>
+
+            <div>
+              <input type="radio" id="east" name="direction" value="east" />
+              <label for="east">East</label>
+            </div>
+
+            <div>
+              <input type="radio" id="south" name="direction" value="south" />
+              <label for="south">South</label>
+            </div>
+
+            <div>
+              <input type="radio" id="west" name="direction" value="west" />
+              <label for="west">West</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <input type="submit" />
+      </form>
+
+      <section class="max-w-sm">
+        <div class="card mt-8">
+          <header>
+            <h2>Today is the Lord's day</h2>
+            <p>Fart</p>
+          </header>
+          <section>I can put whatever info I want in here</section>
+          <footer class="border-t">
+            <button>Go!</button>
+            <button data-variant="outline">Cancel</button>
+          </footer>
+        </div>
+      </section>
     </div>
   </body>
 </html>
