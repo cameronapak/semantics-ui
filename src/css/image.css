@@ -2,4 +2,12 @@
   img[src] {
     @apply rounded-xl;
   }
+
+  figure {
+    @apply w-fit;
+
+    figcaption {
+      @apply text-center text-muted-foreground mt-3 text-sm;
+    }
+  }
 }
