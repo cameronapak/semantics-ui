@@ -99,6 +99,15 @@
     @apply dark:checked:before:bg-primary-foreground checked:before:ms-3.5;
   }
 
+  input[type='color' i] {
+    @apply rounded-full size-[30px] border border-border;
+    &::-webkit-color-swatch-wrapper,
+    &::-webkit-color-swatch,
+    &::-moz-color-swatch {
+      border-radius: 99px;
+    }
+  }
+
   input[type='range'] {
     @apply appearance-none flex items-center p-0 outline-none;
     --slider-value: 20%;
