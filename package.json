@@ -30,7 +30,8 @@
     "dev": "concurrently -k \"bun run dev:server\" \"bun run dev:css\"",
     "dev:server": "bun ./index.ts",
     "dev:css": "tailwindcss -i ./src/css/index.css -o ./src/css/generated.css --watch",
-    "changeset": "changeset"
+    "changeset": "changeset",
+    "publish": "changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "2.29.7",
