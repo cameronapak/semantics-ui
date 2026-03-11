@@ -8,11 +8,11 @@ A semantic-ish CSS component library in the likeness of Shadcn UI, without the f
 Try Semantics UI Now!
 
 ```css
-@import 'https://cdn.jsdelivr.net/npm/semantics-ui@latest/dist/semantics-ui.css';
+@import 'https://cdn.jsdelivr.net/npm/semantics-ui@latest/dist/semantics-ui.min.css';
 ```
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/semantics-ui@latest/dist/semantics-ui.css" type="text/css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/semantics-ui@latest/dist/semantics-ui.min.css" type="text/css" rel="stylesheet">
 ```
 
 ## Features

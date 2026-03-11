@@ -1,5 +1,11 @@
 # semantics-ui
 
+## 0.1.4
+
+### Patch Changes
+
+- Got the minified CSS file smaller than the regular, but it's only a 1kb difference. I have some work to do.
+
 ## 0.1.3
 
 ### Patch Changes
