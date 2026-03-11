@@ -838,7 +838,7 @@
       margin-bottom: calc(var(--spacing) * 1);
     }
   }
-  a[href]:not(.button) {
+  a[href]:not(:is(.button, .item)) {
     display: inline-block;
     color: var(--color-foreground);
     text-decoration-line: underline;
@@ -895,6 +895,17 @@
 }
 @layer button {
   :not(form[method='dialog']) > :is(button:not([role]), input:is([type='submit'], [type='reset'], [type='button']), a.button) {
+    transition-property: transform, translate, scale, rotate;
+    --tw-duration: 150ms;
+    transition-duration: 150ms;
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+    &:active {
+      &:not(*:disabled) {
+        --tw-translate-y: calc(var(--spacing) * 0.5);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+    }
     display: inline-flex;
     flex-shrink: 0;
     cursor: pointer;
@@ -907,13 +918,8 @@
     font-weight: var(--font-weight-medium);
     white-space: nowrap;
     transition-property: all;
-    transition-property: transform, translate, scale, rotate;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 150ms;
-    transition-duration: 150ms;
-    --tw-ease: var(--ease-out);
-    transition-timing-function: var(--ease-out);
     --tw-outline-style: none;
     outline-style: none;
     &:focus-visible {
@@ -927,12 +933,6 @@
       --tw-ring-color: var(--color-ring);
       @supports (color: color-mix(in lab, red, red)) {
         --tw-ring-color: color-mix(in oklab, var(--color-ring) 50%, transparent);
-      }
-    }
-    &:active {
-      &:not(*:disabled) {
-        --tw-translate-y: calc(var(--spacing) * 0.5);
-        translate: var(--tw-translate-x) var(--tw-translate-y);
       }
     }
     &:disabled {
@@ -1130,8 +1130,10 @@
     --tw-ease: var(--ease-out);
     transition-timing-function: var(--ease-out);
     &:active {
-      --tw-translate-y: calc(var(--spacing) * 0.5);
-      translate: var(--tw-translate-x) var(--tw-translate-y);
+      &:not(*:disabled) {
+        --tw-translate-y: calc(var(--spacing) * 0.5);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
     }
   }
   .badge {
@@ -1332,6 +1334,9 @@
     }
     > section {
       padding-inline: calc(var(--spacing) * 4);
+      & > *:last-child {
+        margin-bottom: calc(var(--spacing) * 0) !important;
+      }
     }
     > footer {
       display: grid;
@@ -1576,8 +1581,10 @@
     --tw-ease: var(--ease-out);
     transition-timing-function: var(--ease-out);
     &:active {
-      --tw-translate-y: calc(var(--spacing) * 0.5);
-      translate: var(--tw-translate-x) var(--tw-translate-y);
+      &:not(*:disabled) {
+        --tw-translate-y: calc(var(--spacing) * 0.5);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
     }
   }
   input[type='file']::-webkit-file-upload-button {
@@ -2291,6 +2298,86 @@
     width: calc(var(--spacing) * 6);
     height: calc(var(--spacing) * 6);
     animation: var(--animate-spin);
+  }
+}
+@layer components {
+  .item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--spacing) * 4);
+    border-radius: var(--radius-md);
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    border-color: var(--color-border);
+    padding: calc(var(--spacing) * 4);
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+    --tw-duration: 100ms;
+    transition-duration: 100ms;
+    --tw-outline-style: none;
+    outline-style: none;
+    &:focus-visible {
+      border-color: var(--color-ring);
+    }
+    &:focus-visible {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+    &:focus-visible {
+      --tw-ring-color: var(--color-ring);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-ring) 50%, transparent);
+      }
+    }
+    &:is(a[href]) {
+      text-decoration-line: none !important;
+      transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--color-accent);
+          @supports (color: color-mix(in lab, red, red)) {
+            background-color: color-mix(in oklab, var(--color-accent) 50%, transparent);
+          }
+        }
+      }
+      transition-property: transform, translate, scale, rotate;
+      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+      transition-duration: var(--tw-duration, var(--default-transition-duration));
+      --tw-duration: 150ms;
+      transition-duration: 150ms;
+      --tw-ease: var(--ease-out);
+      transition-timing-function: var(--ease-out);
+      &:active {
+        &:not(*:disabled) {
+          --tw-translate-y: calc(var(--spacing) * 0.5);
+          translate: var(--tw-translate-x) var(--tw-translate-y);
+        }
+      }
+    }
+    & > :is(div, section, article) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: calc(var(--spacing) * 0);
+      & > :is(h1, h2, h3, h4, h5, h6) {
+        margin: calc(var(--spacing) * 0) !important;
+        font-size: var(--text-base) !important;
+        line-height: var(--tw-leading, var(--text-base--line-height)) !important;
+      }
+      & > p {
+        margin: calc(var(--spacing) * 0) !important;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        text-wrap: balance;
+        color: var(--color-muted-foreground);
+      }
+    }
+    & > *:not(svg):has(h1, h2, h3, h4, h5, h6, p) {
+      flex-grow: 1;
+    }
   }
 }
 @layer utilities {

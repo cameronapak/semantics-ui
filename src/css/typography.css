@@ -96,7 +96,7 @@
     }
   }
 
-  a[href]:not(.button) {
+  a[href]:not(:is(.button, .item)) {
     @apply inline-block text-foreground underline underline-offset-4 transition-all duration-100;
 
     &:active {

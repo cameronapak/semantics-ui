@@ -1,0 +1,26 @@
+@layer components {
+  .item {
+    @apply flex items-center border text-sm rounded-md duration-100 flex-wrap outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border-border p-4 gap-4;
+
+    &:is(a[href]) {
+      @apply transition-colors hover:bg-accent/50 no-underline!;
+      @apply bounce;
+    }
+
+    & > :is(div, section, article) {
+      @apply flex flex-col justify-center gap-0;
+
+      & > :is(h1, h2, h3, h4, h5, h6) {
+        @apply m-0! text-base!;
+      }
+
+      & > p {
+        @apply m-0! text-muted-foreground line-clamp-2 text-balance;
+      }
+    }
+
+    & > *:not(svg):has(h1, h2, h3, h4, h5, h6, p) {
+      @apply grow;
+    }
+  }
+}

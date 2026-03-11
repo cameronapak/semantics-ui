@@ -20,6 +20,10 @@
 
     > section {
       @apply px-4;
+
+      & > *:last-child {
+        @apply mb-0!;
+      }
     }
 
     > footer {

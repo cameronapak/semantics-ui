@@ -1,6 +1,6 @@
 @layer components {
   a > .badge {
-    @apply active:translate-y-0.5 transition-transform duration-150 ease-out;
+    @apply bounce;
   }
 
   .badge {
