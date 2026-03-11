@@ -1,4 +1,4 @@
-Semantics UI
+# Semantics UI CSS
 
 A semantic-ish CSS component library in the likeness of Shadcn UI, without the front-end framework overhead. 
 
@@ -11,13 +11,14 @@ Try Semantics UI Now!
 @import 'https://cdn.jsdelivr.net/npm/semantics-ui@latest/dist/semantics-ui.css';
 ```
 
-> [!NOTE]
-> This project is a fork of [Basecoat](https://github.com/hunvreus/basecoat) by [Ronan Berder (hunvreus)](https://github.com/hunvreus), originally a vanilla CSS/JS port of [shadcn/ui](https://ui.shadcn.com). This fork reimagines Basecoat as a semantic CSS library — styling native HTML elements directly instead of using utility classes.
+```html
+<link href="https://cdn.jsdelivr.net/npm/semantics-ui@latest/dist/semantics-ui.css" type="text/css" rel="stylesheet">
+```
 
 ## Features
 
-- **Semantic HTML** (as much as possible): Native elements like `<button>`, `<input>`, `<dialog>` are styled automatically
-- **Lightweight**: Tiny CSS and JS footprint, zero framework dependencies
+- **Semantic HTML** (as much as possible): Native elements like `<button>`, `<input>`, `<h1>` are styled automatically
+- **Lightweight**: Just CSS, zero framework dependencies
 - **Accessible**: Semantic HTML and ARIA roles baked in
 - **Dark mode ready**: Built-in dark theme support
 - **Easy customization**: Override a handful of CSS variables to theme everything
@@ -30,8 +31,13 @@ bun install
 bun dev
 ```
 
+## Attributions
+
+> [!NOTE]
+> This project is a fork of [Basecoat](https://github.com/hunvreus/basecoat) by [Ronan Berder (hunvreus)](https://github.com/hunvreus), originally a vanilla CSS/JS port of [shadcn/ui](https://ui.shadcn.com). This fork reimagines Basecoat as a semantic CSS library — styling native HTML elements directly instead of using utility classes.
+
+SVG's come from Lucide.dev
+
 ## License
 
 [MIT](/LICENSE.md)
-
-SVG come from Lucide.dev
