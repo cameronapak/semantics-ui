@@ -7,8 +7,12 @@
       @apply bounce;
     }
 
+    &:has(> svg) {
+      @apply flex-nowrap;
+    }
+
     & > svg {
-      @apply text-muted-foreground;
+      @apply shrink-0 text-muted-foreground;
     }
 
     & > :is(div, section, article) {

@@ -2358,7 +2358,11 @@
         }
       }
     }
+    &:has(> svg) {
+      flex-wrap: nowrap;
+    }
     & > svg {
+      flex-shrink: 0;
       color: var(--color-muted-foreground);
     }
     & > :is(div, section, article) {
