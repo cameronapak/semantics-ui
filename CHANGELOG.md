@@ -1,5 +1,11 @@
 # semantics-ui
 
+## 0.1.3
+
+### Patch Changes
+
+- Fixed the deploy of the minified CSS. The filename was improperly named.
+
 ## 0.1.2
 
 ### Patch Changes
