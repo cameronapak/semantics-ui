@@ -1,5 +1,11 @@
 # semantics-ui
 
+## 0.1.2
+
+### Patch Changes
+
+- Added minified CSS file
+
 ## 0.1.1
 
 ### Patch Changes
