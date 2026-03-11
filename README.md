@@ -1,9 +1,9 @@
-# WIP: semantics/ui
+Semantics UI
 
-A (work-in-progress) semantic-ish CSS component library in the likeness of Shadcn UI, without the front-end framework overhead. 
+A semantic-ish CSS component library in the likeness of Shadcn UI, without the front-end framework overhead. 
 
-- Styles native HTML elements by default, like typography elements, buttons, and links.
-- Want components like cards, accordions, etc.? Use classes.
+- Styles native HTML elements by default, like typography elements, buttons, inputs, anchor tags, etc.
+- Want components like cards, items, loading-spinners, etc.? Then we use data attributes, classes, and aria attributes.
 
 Try Semantics UI Now!
 
@@ -13,10 +13,6 @@ Try Semantics UI Now!
 
 > [!NOTE]
 > This project is a fork of [Basecoat](https://github.com/hunvreus/basecoat) by [Ronan Berder (hunvreus)](https://github.com/hunvreus), originally a vanilla CSS/JS port of [shadcn/ui](https://ui.shadcn.com). This fork reimagines Basecoat as a semantic CSS library — styling native HTML elements directly instead of using utility classes.
-
-![Banner](./banner.png)
-
-![Banner 2](./banner-2.png)
 
 ## Features
 
@@ -34,12 +30,8 @@ bun install
 bun dev
 ```
 
-### Known Issues
-
-- **CSS hot reload requires Tailwind CLI watcher.** Bun's dev server doesn't track transitive CSS `@import` dependencies for HMR ([oven-sh/bun#19734](https://github.com/oven-sh/bun/issues/19734)). Editing an imported CSS file (e.g. `button.css`) won't trigger a reload on its own. The `dev` script works around this by running `tailwindcss --watch` alongside the Bun server via `concurrently` — Tailwind CLI compiles all source CSS into `src/css/generated.css`, which Bun _does_ detect changes to.
-
 ## License
 
 [MIT](/LICENSE.md)
 
-Calendar SVG comes from Lucide.dev
+SVG come from Lucide.dev
