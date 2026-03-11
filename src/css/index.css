@@ -8,6 +8,7 @@
 @import './input.css';
 @import './table.css';
 @import './image.css';
+@import './spinner.css';
 @import './utils.css';
 
 @custom-variant dark (&:is(.dark *));

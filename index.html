@@ -177,13 +177,28 @@
       </section>
 
       <section class="section x-stack max-w-sm">
-        <h2>This is an <code>.x-stack</code></h2>
+        <h3>This is an <code>.x-stack</code></h3>
         <span class="badge bg-blue-600">New</span>
       </section>
 
       <section class="section y-stack max-w-sm">
-        <h2>This is a <code>.y-stack</code></h2>
+        <h3>This is a <code>.y-stack</code></h3>
         <span class="badge bg-blue-600">New</span>
+      </section>
+
+      <section class="section y-stack">
+        <h2>Spinner</h2>
+        <p>All you need to do is add <code>aria-busy="true"</code> to any element</p>
+        <div aria-busy="true"></div>
+        <p>And, if you want an overlay, you'll need to also add <code>data-variant="overlay"</code></p>
+        <div aria-busy="true" class="card" data-variant="overlay">
+          <header>
+            <h3>This is a card</h3>
+          </header>
+          <section>
+            <p>All the things and contents in here</p>
+          </section>
+        </div>
       </section>
     </div>
   </body>
