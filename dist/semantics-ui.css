@@ -332,6 +332,9 @@
   .min-w-5 {
     min-width: calc(var(--spacing) * 5);
   }
+  .shrink {
+    flex-shrink: 1;
+  }
   .shrink-0 {
     flex-shrink: 0;
   }
@@ -626,13 +629,19 @@
 @layer base {
   * {
     margin: calc(var(--spacing) * 0);
+    flex-shrink: 0;
+    overscroll-behavior: none;
     border-color: var(--color-border);
     outline-color: var(--color-ring);
     @supports (color: color-mix(in lab, red, red)) {
       outline-color: color-mix(in oklab, var(--color-ring) 50%, transparent);
     }
   }
+  @view-transition {
+    navigation: auto;
+  }
   html {
+    overscroll-behavior: none;
     scroll-behavior: smooth;
   }
   body {

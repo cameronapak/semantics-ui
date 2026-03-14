@@ -1,10 +1,15 @@
 @layer base {
   * {
-    @apply border-border outline-ring/50 m-0;
+    @apply shrink-0 overscroll-none border-border outline-ring/50 m-0;
   }
 
+  @view-transition {
+    navigation: auto;
+  }
+
+  /* https://x.com/BHolmesDev/status/1970489474866958642 */
   html {
-    @apply scroll-smooth;
+    @apply scroll-smooth overscroll-none;
   }
 
   body {
